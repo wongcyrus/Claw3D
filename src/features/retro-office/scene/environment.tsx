@@ -1,6 +1,7 @@
 "use client";
 
 import { memo, type ReactNode } from "react";
+import { useTexture } from "@react-three/drei";
 import {
   CANVAS_H,
   CANVAS_W,
@@ -678,6 +679,19 @@ export const FloorAndWalls = memo(function FloorAndWalls({
   );
 });
 
+function HkiitFlagArt() {
+  const texture = useTexture("/office-assets/hkiit_logo.jpg");
+  const flagWidth = 0.52;
+  const flagHeight = 0.287; // Based on 436x241 aspect ratio
+
+  return (
+    <mesh position={[0, 0, 0.001]}>
+      <planeGeometry args={[flagWidth, flagHeight]} />
+      <meshBasicMaterial map={texture} side={2} />
+    </mesh>
+  );
+}
+
 export const WallPictures = memo(function WallPictures({
   showRemoteOffice = true,
 }: {
@@ -714,7 +728,7 @@ export const WallPictures = memo(function WallPictures({
       <OfficeFlagPole
         position={localFlagPolePosition}
         rotY={0.32}
-        art={<UsaFlagArt />}
+        art={<HkiitFlagArt />}
       />
       {showRemoteOffice ? (
         <OfficeFlagPole

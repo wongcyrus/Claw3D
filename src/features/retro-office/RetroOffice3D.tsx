@@ -2317,7 +2317,7 @@ export function RetroOffice3D({
   monitorByAgentId = EMPTY_MONITOR_MAP,
   githubSkill = null,
   soundclawEnabled = false,
-  officeTitle = "Luke Headquarters",
+  officeTitle = "Higher Diploma in Cloud and Data Centre Administration",
   officeTitleLoaded = false,
   remoteOfficeEnabled = false,
   remoteOfficeSourceKind = "presence_endpoint",

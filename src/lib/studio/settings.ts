@@ -314,7 +314,7 @@ const normalizeOptionalIsoString = (
   return trimmed ? trimmed : null;
 };
 
-const DEFAULT_OFFICE_TITLE = "Luke Headquarters";
+const DEFAULT_OFFICE_TITLE = "Higher Diploma in Cloud and Data Centre Administration";
 const DEFAULT_REMOTE_OFFICE_LABEL = "Remote Office";
 const DEFAULT_REMOTE_OFFICE_SOURCE_KIND = "presence_endpoint" as const;
 
@@ -323,7 +323,7 @@ const normalizeOfficeTitle = (
   fallback: string = DEFAULT_OFFICE_TITLE
 ) => {
   const title = coerceString(value);
-  return (title || fallback).slice(0, 48);
+  return (title || fallback).slice(0, 64);
 };
 
 const normalizeRemoteOfficeLabel = (
@@ -331,7 +331,7 @@ const normalizeRemoteOfficeLabel = (
   fallback: string = DEFAULT_REMOTE_OFFICE_LABEL
 ) => {
   const label = coerceString(value);
-  return (label || fallback).slice(0, 48);
+  return (label || fallback).slice(0, 64);
 };
 
 const normalizeRemoteOfficePresenceUrl = (value: unknown) => {

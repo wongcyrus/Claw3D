@@ -163,7 +163,7 @@ describe("studio settings normalization", () => {
     );
     expect(normalized.office.bad).toEqual(
       expect.objectContaining({
-        title: "Luke Headquarters",
+        title: "Higher Diploma in Cloud and Data Centre Administration",
       }),
     );
   });
@@ -172,7 +172,7 @@ describe("studio settings normalization", () => {
     const current = normalizeStudioSettings({
       office: {
         "ws://localhost:18789": {
-          title: "Luke Headquarters",
+          title: "Higher Diploma in Cloud and Data Centre Administration",
         },
       },
     });
