@@ -228,11 +228,12 @@ function createGatewayProxy(options) {
     };
 
     const forwardConnectFrame = (frame) => {
-      const browserHasAuth =
+      const browserHasTokenOrPassword =
         hasNonEmptyToken(frame.params) ||
         hasNonEmptyPassword(frame.params) ||
-        hasNonEmptyDeviceToken(frame.params) ||
-        hasCompleteDeviceAuth(frame.params);
+        hasNonEmptyDeviceToken(frame.params);
+
+      const browserHasAuth = browserHasTokenOrPassword || hasCompleteDeviceAuth(frame.params);
 
       const requiresToken = upstreamAdapterType === "openclaw";
       if (requiresToken && !upstreamToken && !browserHasAuth) {
@@ -243,7 +244,7 @@ function createGatewayProxy(options) {
         return;
       }
 
-      const baseConnectFrame = browserHasAuth
+      const baseConnectFrame = browserHasTokenOrPassword
         ? frame
         : {
             ...frame,

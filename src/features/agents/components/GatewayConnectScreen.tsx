@@ -92,11 +92,14 @@ export const GatewayConnectScreen = ({
     if (status === "connecting") {
       return "Connecting to remote gateway…";
     }
+    if (error) {
+      return "Gateway connection failed.";
+    }
     if (isLocal) {
-      return "No local gateway found.";
+      return "Local gateway disconnected.";
     }
     return "Not connected to a gateway.";
-  }, [isLocal, localPort, status]);
+  }, [isLocal, localPort, status, error]);
   const selectedAdapterHint = useMemo(() => {
     switch (selectedAdapterType) {
       case "openclaw":
@@ -257,7 +260,7 @@ export const GatewayConnectScreen = ({
       <div className="ui-card px-4 py-5 sm:px-6">
         <div>
           <p className="font-mono text-[10px] font-medium tracking-[0.06em] text-muted-foreground">
-            Remote gateway (recommended)
+            {isLocal ? "Local gateway" : "Remote gateway (recommended)"}
           </p>
           <p className="mt-2 text-sm text-foreground/90">
             Choose a backend, then connect to its gateway URL.
