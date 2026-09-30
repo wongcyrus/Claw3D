@@ -802,8 +802,7 @@ export const useGatewayConnection = (
         // selected adapter. Without this, switching to Hermes never
         // auto-connects because lastKnownGood is still "openclaw".
         const hasPersistedProfileForSelected =
-          Boolean(resolvedGatewayProfiles.lastKnownGoodForSelected?.url) ||
-          (isAutoManagedAdapter(nextAdapterType) && nextGatewayUrl.trim().length > 0);
+          Boolean(resolvedGatewayProfiles.lastKnownGoodForSelected?.url);
         loadedGatewaySettings.current = {
           gatewayUrl: nextGatewayUrl.trim(),
           token: nextToken,

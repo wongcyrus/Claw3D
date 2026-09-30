@@ -244,12 +244,13 @@ function createGatewayProxy(options) {
         return;
       }
 
-      const baseConnectFrame = browserHasTokenOrPassword
-        ? frame
-        : {
-            ...frame,
-            params: injectAuthToken(frame.params, upstreamToken),
-          };
+      const baseConnectFrame =
+        browserHasTokenOrPassword || !upstreamToken
+          ? frame
+          : {
+              ...frame,
+              params: injectAuthToken(frame.params, upstreamToken),
+            };
 
       const connectParams = isObject(baseConnectFrame.params)
         ? { ...baseConnectFrame.params }
